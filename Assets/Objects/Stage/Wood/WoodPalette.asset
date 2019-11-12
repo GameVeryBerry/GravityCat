@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bc44d0e1e714287b4312f04cef0bf1, type: 3}
+  m_Name: WoodPalette
+  m_EditorClassIdentifier: 
+  title: "\u6728\u6750"
+  stageType: 0
+  prefabs:
+  - {fileID: 1834381439212682, guid: ef334f715f6eeeb41aa01b236f5f8ae3, type: 3}
+  - {fileID: 1571310942860014, guid: d880f6718e631c848820a53c5352386e, type: 3}
+  - {fileID: 7769588409345856952, guid: 63335645601ac8b438e66b4d8b39bde6, type: 3}
+  - {fileID: 1213143419398960, guid: 0f4db8b5bf10eb3499d0c8afe1a29fdc, type: 3}
+  - {fileID: 1619242439363416, guid: adbfcc02ed3b59b47910d10b269bd343, type: 3}
+  - {fileID: 1456382131820692, guid: 12b907be96d29ec4ca0c22e4aa25f5a2, type: 3}
+  - {fileID: 1920042299645504, guid: 56395c67f77a3f84382eb595336656e5, type: 3}
+  - {fileID: 1209107214697876, guid: 3c7e0a231b1129248b6bda8573b41893, type: 3}
+  - {fileID: 1738861961673680, guid: 8b3c2d1a09d5e7345bf7f31245e15754, type: 3}
+  - {fileID: 1131733311091308, guid: e9abe54512dfc72428f49be81c5ac12d, type: 3}
+  prevFolder: 

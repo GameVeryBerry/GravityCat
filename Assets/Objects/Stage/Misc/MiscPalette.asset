@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bc44d0e1e714287b4312f04cef0bf1, type: 3}
+  m_Name: MiscPalette
+  m_EditorClassIdentifier: 
+  title: "\u305D\u306E\u4ED6"
+  stageType: 0
+  prefabs:
+  - {fileID: 1007989369223836, guid: b3742608a64feee48a577c688d428b95, type: 3}
+  - {fileID: 2858861136950214050, guid: c36579aebfd0ae540aa80f5e8671aa8a, type: 3}
+  - {fileID: 4812609986598050675, guid: 2a2a59dd8f2c255429f2a9ccb1748904, type: 3}
+  - {fileID: 2625846792996193211, guid: f4f8db90c33932f41b7ef4d9e3f0e060, type: 3}
+  prevFolder: 
