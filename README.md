@@ -3,7 +3,8 @@
 重力猫
 
 ## ステージ作成の方法
-Unity 2018.4.2f1 でこのプロジェクトを開いてください。  
+Gitの使い方がわかる方はクローンを、わからない方は[こちら](https://github.com/GameVeryBerry/GravityCat/archive/master.zip)からダウンロードください。   
+Unity 2018.4.2f1 でダウンロードしたプロジェクトを開いてください。  
 上部のステージ作成からステージを新規作成を押してください  
 [![Image from Gyazo](https://i.gyazo.com/1ae2949387e1a6a2c9e7d62a7edae93c.png)](https://gyazo.com/1ae2949387e1a6a2c9e7d62a7edae93c)  
 ステージ名を`自分の名前ローマ字.s番号`のフォーマットに従って命名してください。  
