@@ -46,8 +46,8 @@ public class PartsPaletteWindow : EditorWindow
 
     void OnEnable()
     {
-        SceneView.duringSceneGui -= OnSceneGUI;
-        SceneView.duringSceneGui += OnSceneGUI;
+        SceneView.onSceneGUIDelegate -= OnSceneGUI;
+        SceneView.onSceneGUIDelegate += OnSceneGUI;
 
         Undo.undoRedoPerformed -= Repaint;
         Undo.undoRedoPerformed += Repaint;
@@ -59,7 +59,7 @@ public class PartsPaletteWindow : EditorWindow
 
     void OnDisable()
     {
-        SceneView.duringSceneGui -= OnSceneGUI;
+        SceneView.onSceneGUIDelegate -= OnSceneGUI;
         Undo.undoRedoPerformed -= Repaint;
     }
 
