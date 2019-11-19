@@ -34,13 +34,11 @@ public class PartsPaletteWindow : EditorWindow
     bool optionsToggle = true;
 
     bool dragMode = false;
-    bool scaleMode = false;
-    bool posZMode = false;
+    bool scaleYMode = false;
+    bool scaleXMode = false;
     Vector2 lastMousePos;
-    float currentScale;
+    Vector2 currentScale;
     Vector3 lastScale;
-    float currentPosZ;
-    float lastPosZ;
 
     Transform parentTo;
 
@@ -317,33 +315,49 @@ public class PartsPaletteWindow : EditorWindow
                     ev.Use();
 
                     lastMousePos = mousePos;
-                    currentScale = 1f;
-                    scaleMode = false;
-                    posZMode = false;
+                    currentScale = Vector2.one;
+                    scaleYMode = false;
+                    scaleXMode = false;
                     dragMode = true;
 
-                    lastScale = placingObj.transform.localScale;
-                    lastPosZ = placingObj.transform.localPosition.z;
+                    var sprite = placingObj.GetComponent<SpriteRenderer>();
+                    lastScale = sprite == null ? placingObj.transform.localScale : (Vector3)sprite.size;
                 }
                 break;
             case EventType.MouseDrag:
                 if (ev.button == 0)
                 {
                     if (Mathf.Abs((mousePos - lastMousePos).y) > 10f)
-                        scaleMode = true;
+                        scaleYMode = true;
                     if (Mathf.Abs((mousePos - lastMousePos).x) > 10f)
-                        posZMode = true;
-                    if (scaleMode)
+                        scaleXMode = true;
+                    if (scaleYMode)
                     {
-                        currentScale = Mathf.Pow(2f, -(mousePos - lastMousePos).y / 40f);
-                        placingObj.transform.localScale = lastScale * currentScale;
+                        var sprite = placingObj.GetComponent<SpriteRenderer>();
+                        var col = placingObj.GetComponent<BoxCollider2D>();
+                        currentScale.y = Mathf.Pow(2f, -(mousePos - lastMousePos).y / 40f);
+                        if (sprite != null)
+                        {
+                            sprite.size = lastScale * currentScale;
+                            if (col != null)
+                                col.size = lastScale * currentScale;
+                        }
+                        else
+                            placingObj.transform.localScale = lastScale.y * currentScale;
                     }
-                    if (posZMode)
+                    if (scaleXMode)
                     {
-                        currentPosZ = (mousePos - lastMousePos).x / 40f;
-                        var pos = placingObj.transform.position;
-                        pos.z = lastPosZ + currentPosZ;
-                        placingObj.transform.position = pos;
+                        var sprite = placingObj.GetComponent<SpriteRenderer>();
+                        var col = placingObj.GetComponent<BoxCollider2D>();
+                        currentScale.x = Mathf.Pow(2f, (mousePos - lastMousePos).x / 40f);
+                        if (sprite != null)
+                        {
+                            sprite.size = lastScale * currentScale;
+                            if (col != null)
+                                col.size = lastScale * currentScale;
+                        }
+                        else
+                            placingObj.transform.localScale = lastScale.x * currentScale;
                     }
                 }
                 break;
@@ -354,14 +368,14 @@ public class PartsPaletteWindow : EditorWindow
                     ev.Use();
                     PlaceObj();
 
-                    currentScale = 1f;
+                    currentScale = Vector2.one;
                     dragMode = false;
                 }
                 break;
         }
 
         if (placingObj != null)
-            Handles.RectangleHandleCap(control, placePos, Quaternion.FromToRotation(Vector3.down, placeNor), 0.45f * currentScale, EventType.Repaint);
+            Handles.RectangleHandleCap(control, placePos, Quaternion.FromToRotation(Vector3.down, placeNor), 0.45f * currentScale.magnitude, EventType.Repaint);
 
         Handles.BeginGUI();
         GUILayout.BeginArea(new Rect(4f, 4f, 300f, EditorGUIUtility.singleLineHeight * 3f));
@@ -439,6 +453,8 @@ public class PartsPaletteWindow : EditorWindow
         var t = placingObj.transform;
         placingObj.hideFlags = HideFlags.None;
 
+        Undo.RecordObject(placingObj.GetComponent<SpriteRenderer>(), "place object");
+        Undo.RecordObject(placingObj.GetComponent<BoxCollider2D>(), "place object");
         Undo.RegisterCreatedObjectUndo(placingObj, "place object");
 
         placingObj = null;
