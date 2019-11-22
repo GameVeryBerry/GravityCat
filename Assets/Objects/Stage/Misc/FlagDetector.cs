@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlagDetector : MonoBehaviour {
+    public string scene = "ClearScene";
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject.Find("GameDirector").GetComponent<GameDirector>().Clear();
+        GameDirector.Get().Clear(scene);
     }
 }

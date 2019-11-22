@@ -4,28 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameDirector : MonoBehaviour {
+public class GameDirector : MonoBehaviour
+{
     public GameObject scoreboard;
     public PlayerController player;
 
-    Text scoreboardText;
+    public Text scoreboardText;
     float time = 0;
 
-	// Use this for initialization
-	void Start () {
-        scoreboardText = scoreboard.GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        time += Time.deltaTime;
-        scoreboardText.text = "タイム: " + time.ToString("F2") + "秒";
-	}
+    // Use this for initialization
+    void Start()
+    {
+        if (scoreboard != null)
+            scoreboardText = scoreboard.GetComponent<Text>();
+    }
 
-    public void Clear()
+    // Update is called once per frame
+    void Update()
+    {
+        time += Time.deltaTime;
+        if (scoreboardText != null)
+            scoreboardText.text = "タイム: " + time.ToString("F2") + "秒";
+    }
+
+    public void Clear(string scene)
     {
         PlayerPrefs.SetFloat("saveddata.time", time);
-        SceneManager.LoadScene("ClearScene");
+        SceneManager.LoadScene(scene);
     }
 
     public static GameDirector Get()
