@@ -24,7 +24,7 @@ public class ClearDirector : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        bool jumpButton = Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0);
+        bool jumpButton = Input.GetButtonDown("Submit");
         if (jumpButton)
             SceneManager.LoadScene("TitleScene");
 	}

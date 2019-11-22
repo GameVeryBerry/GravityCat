@@ -22,6 +22,8 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+            SceneManager.LoadScene("TitleScene");
         time += Time.deltaTime;
         if (scoreboardText != null)
             scoreboardText.text = "タイム: " + time.ToString("F2") + "秒";

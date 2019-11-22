@@ -12,6 +12,24 @@ EditorBuildSettings:
     path: Assets/Scenes/ClearScene.unity
     guid: 6b7cba7cb5587514b81fc1d7a4df9270
   - enabled: 1
+    path: Assets/Stages/ydeagames.stageselect/ydeagames.stageselect.unity
+    guid: d7b38ce867a45b5488a73c8c0fb938e3
+  - enabled: 1
     path: Assets/Stages/ydeagames.s1/ydeagames.s1.unity
     guid: 90d593e341c2bb5429578f3a66118ac5
+  - enabled: 1
+    path: Assets/Stages/ydeagames.s2/ydeagames.s2.unity
+    guid: 6a728dc2f48c1844cbba9345c73df8b3
+  - enabled: 1
+    path: Assets/Stages/kobata.s11/kobata.s11.unity
+    guid: c7f2724a104f353449812074285a3550
+  - enabled: 1
+    path: Assets/Stages/miyashita.s4/miyashita.s4.unity
+    guid: bd56006a450a0ea42884c9fd30e605c9
+  - enabled: 1
+    path: Assets/Stages/takumi.s23/takumi.s23.unity
+    guid: 4d48cb75c16de0d4c9a43810410b90d1
+  - enabled: 1
+    path: Assets/Stages/TakumiYanase.s3/TakumiYanase.s3.unity
+    guid: 5ab266eb3321f1549b778cb81f8a4252
   m_configObjects: {}

@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour
         //float max = Mathf.Repeat(filter2d.maxNormalAngle + rotateGravity, 360);
         //filter2dRot.SetNormalAngle(Mathf.Min(min, max), Mathf.Max(min, max));
         bool onGrounds = rigid2D.IsTouching(filter2dRot);
-        bool jumpButtonDown = Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0);
-        bool jumpButton = Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0);
+        bool jumpButtonDown = Input.GetButtonDown("Jump");
+        bool jumpButton = Input.GetButton("Jump");
 
         // キーコントロール
         int keyoffset = (int)((currentRotate + 45) / (360 / 4));
@@ -81,21 +81,17 @@ public class PlayerController : MonoBehaviour
         }
         // 移動
         {
-            KeyCode[] keyrotate = {
-                KeyCode.UpArrow,
-                KeyCode.LeftArrow,
-                KeyCode.DownArrow,
-                KeyCode.RightArrow
+            float[] keyrotate = {
+                Input.GetAxis("Vertical"),
+                -Input.GetAxis("Horizontal"),
+                -Input.GetAxis("Vertical"),
+                Input.GetAxis("Horizontal")
             };
-            int key = 0;
-            if (Input.GetKey(keyrotate[(keyoffset + 3 + 4) % 4]) || Input.acceleration.x > this.threshold)
-                key += 1;
-            if (Input.GetKey(keyrotate[(keyoffset + 1 + 4) % 4]) || Input.acceleration.x < -this.threshold)
-                key += -1;
+            float key = keyrotate[(keyoffset + 3 + 4) % 4];
             if (speedx < this.maxWalkSpeed)
                 this.rigid2D.AddForce(transform.right * key * walkForce);
             if (key != 0)
-                transform.localScale = new Vector3(key, 1, 1);
+                transform.localScale = new Vector3(key < 0 ? -1 : 1, 1, 1);
         }
 
         this.animator.SetBool("JumpEndFlag", onGrounds);

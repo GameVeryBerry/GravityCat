@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6583e8735567f442a50e9891a3ffd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: {fileID: 11400000, guid: 614e21ceb93656042848d0b43a3c8e6c, type: 2}

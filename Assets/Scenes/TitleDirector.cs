@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TitleDirector : MonoBehaviour {
+    public Stage stage;
 
 	// Use this for initialization
 	void Start () {
@@ -12,8 +13,8 @@ public class TitleDirector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        bool jumpButton = Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0);
+        bool jumpButton = Input.GetButtonDown("Submit");
         if (jumpButton)
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene(stage.sceneName);
     }
 }
